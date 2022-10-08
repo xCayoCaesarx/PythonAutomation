@@ -1,21 +1,17 @@
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium import webdriver;
-import time ;
-
-driver = webdriver.Chrome(executable_path=r"/home/juzcategui/Descargas/chromedriver_linux64/chromedriver");
 
 
-driver.get("http://selenium.dev");
+driver = webdriver.Chrome()
 
-driver.maximize_window();
+driver.get("http://automationpractice.com/index.php")
 
-##time.sleep(3)
+driver.maximize_window()
 
-vegetable = driver.find_element(By.XPATH, "//h4[@class='h3 mb-3 selenium-webdriver']").text;
+driver.find_element(By.LINK_TEXT, "Sign in").click()
 
+driver.find_element(By.ID, "email").send_keys("jtegui@gmail.com")
 
+driver.find_element(By.ID, "passwd").send_keys("Abcd1234")
 
-print(vegetable);
-
-
-driver.quit()
+driver.find_element(By.CSS_SELECTOR, "#SubmitLogin > span").click()
