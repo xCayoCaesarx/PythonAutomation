@@ -38,17 +38,37 @@ driver.find_element(By.CSS_SELECTOR, ".button[data-id-product='1'] > span").clic
 
 driver.implicitly_wait(8)
  
-#driver.find_element(By.CSS_SELECTOR, "#header > div:nth-child(3)").click()
 
-#assertion
+#assertion cuandp es diferente no muestra assetion error.
 
 assert driver.find_element(By.CSS_SELECTOR, "h2:nth-child(2)").text != "Product successfully added to your shopping cart"
 
+#seguir comprando
+#driver.find_element(By.CSS_SELECTOR, ".continue > span").click()
 
-driver.find_element(By.CSS_SELECTOR, ".continue > span").click()
+#avanzar en el checkout
+driver.find_element(By.CSS_SELECTOR, ".button-medium > span").click()
+driver.find_element(By.CSS_SELECTOR, ".standard-checkout > span").click()
 
 
-########################
-##driver.find_element(By.CSS_SELECTOR, ".ajax_block_product:nth-child(3) .button:nth-child(1) > span").click()
-##driver.find_element(By.CSS_SELECTOR, ".continue > span").click()
+#UPDATE DIRECCTION
+driver.find_element(By.CSS_SELECTOR, "#address_delivery span").click()
+driver.find_element(By.ID, "address2").click()
+driver.find_element(By.ID, "address2").send_keys("new direction")
+driver.find_element(By.CSS_SELECTOR, "#submitAddress > span").click()
+driver.find_element(By.CSS_SELECTOR, ".button:nth-child(4) > span").click()
+driver.find_element(By.ID, "cgv").click()
+driver.find_element(By.CSS_SELECTOR, ".standard-checkout > span").click()
+driver.find_element(By.CSS_SELECTOR, ".bankwire > span").click()
+driver.find_element(By.CSS_SELECTOR, "#cart_navigation span").click()
+
+
+#view history orders
+driver.find_element(By.LINK_TEXT, "Back to orders").click()
   
+driver.implicitly_wait(3)
+
+#screenshot del order history 
+driver.save_screenshot('./history.png')
+
+driver. quit()
